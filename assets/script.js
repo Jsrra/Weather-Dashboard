@@ -3,16 +3,8 @@ var searchBtn = document.querySelector(".search-Btn")
 var apiKey = 'db145fe4344025343d0b1011a4ff4118'
 
 searchBtn.addEventListener("click", function () {
-
     console.log(city.value)
-    fetch("https://api.openweathermap.org/data/2.5/forecast?lat={" + lat + "}&lon={" + lon + "}&appid={" + apiKey + "}")
-        // getWeather()
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            console.log(data);
-        });
+    getWeather()
 })
 // var formSubmitHandler = function (event) {
 //     event.preventDefault();
