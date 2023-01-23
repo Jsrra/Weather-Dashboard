@@ -14,7 +14,7 @@ searchBtn.addEventListener("click", function () {
 var lon = 37.3388
 var lat = 121.8853
 var getWeather = function () {
-    var apiUrl = "api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}"
+    var apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
 
     fetch(apiUrl)
         .then(function (response) {
