@@ -11,16 +11,16 @@ searchBtn.addEventListener("click", function () {
 
 //     var cityInput = citySearch.value.trim();
 // };
-var lon = 37.3388
-var lat = 121.8853
+var lon = 121.8853
+var lat = 37.3387
 var getWeather = function () {
     var apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`
 
     fetch(apiUrl)
-        .then(function (response) {
-            if (response.ok) {
-                response.json().then(function (data) {
-                    console.log(response)
+        .then(function (data) {
+            if (data.ok) {
+                data.json().then(function (data) {
+                    console.log(data)
                 });
             }
         })
