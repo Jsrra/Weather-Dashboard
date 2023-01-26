@@ -23,7 +23,7 @@ var humidity3 = document.querySelector("#humidity3")
 var humidity4 = document.querySelector("#humidity4")
 var humidity5 = document.querySelector("#humidity5")
 var humidity6 = document.querySelector("#humidity6")
-
+var icon2 = document.querySelector("#icon2")
 // Dates
 var date = dayjs()
 
@@ -51,6 +51,8 @@ var apiKey = 'db145fe4344025343d0b1011a4ff4118'
 searchBtn.addEventListener("click", function () {
     console.log(city.value)
     getWeather(city.value)
+    var fc = document.querySelector("#fc")
+    fc.classList.remove("hide")
 })
 
 var getWeather = function (city) {
@@ -89,40 +91,46 @@ function forecastFiveDay(lat, lon) {
         .then(function (data) {
             if (data.ok) {
                 data.json().then(function (data) {
-                    console.log(data.list[0])
-                    console.log(data.list[1])
-                    console.log(data.list[2])
-                    console.log(data.list[3])
-                    console.log(data.list[4])
+                    console.log(data)
+                    // console.log(data.list[0])
+                    // console.log(data.list[1])
+                    // console.log(data.list[2])
+                    // console.log(data.list[3])
+                    // console.log(data.list[4])
 
-                    temp2.textContent = "Temp: " + data.list[0].main.temp + "°F"
-                    wind2.textContent = "Wind: " + data.list[0].wind.speed + " MPH"
-                    humidity2.textContent = "Humidity: " + data.list[0].main.humidity + "%"
+                    temp2.textContent = "Temp: " + data.list[4].main.temp + "°F"
+                    wind2.textContent = "Wind: " + data.list[4].wind.speed + " MPH"
+                    humidity2.textContent = "Humidity: " + data.list[4].main.humidity + "%"
 
-                    temp3.textContent = "Temp: " + data.list[1].main.temp + "°F"
-                    wind3.textContent = "Wind: " + data.list[1].wind.speed + " MPH"
-                    humidity3.textContent = "Humidity: " + data.list[1].main.humidity + "%"
+                    temp3.textContent = "Temp: " + data.list[12].main.temp + "°F"
+                    wind3.textContent = "Wind: " + data.list[12].wind.speed + " MPH"
+                    humidity3.textContent = "Humidity: " + data.list[12].main.humidity + "%"
 
-                    temp4.textContent = "Temp: " + data.list[2].main.temp + "°F"
-                    wind4.textContent = "Wind: " + data.list[2].wind.speed + " MPH"
-                    humidity4.textContent = "Humidity: " + data.list[2].main.humidity + "%"
+                    temp4.textContent = "Temp: " + data.list[20].main.temp + "°F"
+                    wind4.textContent = "Wind: " + data.list[20].wind.speed + " MPH"
+                    humidity4.textContent = "Humidity: " + data.list[20].main.humidity + "%"
 
-                    temp5.textContent = "Temp: " + data.list[3].main.temp + "°F"
-                    wind5.textContent = "Wind: " + data.list[3].wind.speed + " MPH"
-                    humidity5.textContent = "Humidity: " + data.list[3].main.humidity + "%"
+                    temp5.textContent = "Temp: " + data.list[28].main.temp + "°F"
+                    wind5.textContent = "Wind: " + data.list[28].wind.speed + " MPH"
+                    humidity5.textContent = "Humidity: " + data.list[28].main.humidity + "%"
 
-                    temp6.textContent = "Temp: " + data.list[4].main.temp + "°F"
-                    wind6.textContent = "Wind: " + data.list[4].wind.speed + " MPH"
-                    humidity6.textContent = "Humidity: " + data.list[4].main.humidity + "%"
+                    temp6.textContent = "Temp: " + data.list[36].main.temp + "°F"
+                    wind6.textContent = "Wind: " + data.list[36].wind.speed + " MPH"
+                    humidity6.textContent = "Humidity: " + data.list[36].main.humidity + "%"
 
-                    // var fiveArray = [
-                    //     data.list[0],
-                    //     data.list[1],
-                    //     data.list[2],
-                    //     data.list[3],
-                    //     data.list[4]
+
+                    // icon2.innerHTML = `<img src="http://openweathermap.org/img/wn/${data.list[0].weather[0].icon}@2x.png" alt="Sky"></img>`
+
+                    // var fiveArrayDay1 = [
+                    //     data.list[0].main.temp_max,
+                    //     data.list[2].main.temp_max,
+                    //     data.list[3].main.temp_max,
+                    //     data.list[4].main.temp_max,
+                    //     data.list[5].main.temp_max,
+                    //     data.list[6].main.temp_max,
+                    //     data.list[7].main.temp_max
                     // ]
-                    // for (let index = 0; index < fiveArray.length; index++) {
+                    // for (let index = 0; index < fiveArrayDay1.length; index++) {
 
 
 
@@ -135,16 +143,11 @@ function forecastFiveDay(lat, lon) {
 
 }
 
-// $("#today").text(dayjs().format("dddd, MMMM D"))
-
-
-
-// formSubmitHandler.addEventListener('submit', formSubmitHandler); {
-//     console.log("clicked")
+// showHistory(){
+//     localStorage.get item
+//     for (let index = 0; index < city.length; index++) {
+//         const element = array[index];
+//         append button
+        
+//     }
 // }
-
-// var formSubmitHandler = function (event) {
-//     event.preventDefault();
-
-//     var cityInput = citySearch.value.trim();
-// };
