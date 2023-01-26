@@ -25,6 +25,10 @@ var humidity4 = document.querySelector("#humidity4")
 var humidity5 = document.querySelector("#humidity5")
 var humidity6 = document.querySelector("#humidity6")
 var icon2 = document.querySelector("#icon2")
+var icon3 = document.querySelector("#icon3")
+var icon4 = document.querySelector("#icon4")
+var icon5 = document.querySelector("#icon5")
+var icon6 = document.querySelector("#icon6")
 // Dates
 var date = dayjs()
 
@@ -103,70 +107,52 @@ function forecastFiveDay(lat, lon) {
                     temp2.textContent = "Temp: " + data.list[4].main.temp + "°F"
                     wind2.textContent = "Wind: " + data.list[4].wind.speed + " MPH"
                     humidity2.textContent = "Humidity: " + data.list[4].main.humidity + "%"
+                    icon2.innerHTML = `<img src="http://openweathermap.org/img/wn/${data.list[4].weather[0].icon}@2x.png" alt="Sky"></img>`
 
                     temp3.textContent = "Temp: " + data.list[12].main.temp + "°F"
                     wind3.textContent = "Wind: " + data.list[12].wind.speed + " MPH"
                     humidity3.textContent = "Humidity: " + data.list[12].main.humidity + "%"
+                    icon3.innerHTML = `<img src="http://openweathermap.org/img/wn/${data.list[12].weather[0].icon}@2x.png" alt="Sky"></img>`
 
                     temp4.textContent = "Temp: " + data.list[20].main.temp + "°F"
                     wind4.textContent = "Wind: " + data.list[20].wind.speed + " MPH"
                     humidity4.textContent = "Humidity: " + data.list[20].main.humidity + "%"
+                    icon4.innerHTML = `<img src="http://openweathermap.org/img/wn/${data.list[20].weather[0].icon}@2x.png" alt="Sky"></img>`
 
                     temp5.textContent = "Temp: " + data.list[28].main.temp + "°F"
                     wind5.textContent = "Wind: " + data.list[28].wind.speed + " MPH"
                     humidity5.textContent = "Humidity: " + data.list[28].main.humidity + "%"
+                    icon5.innerHTML = `<img src="http://openweathermap.org/img/wn/${data.list[28].weather[0].icon}@2x.png" alt="Sky"></img>`
 
                     temp6.textContent = "Temp: " + data.list[36].main.temp + "°F"
                     wind6.textContent = "Wind: " + data.list[36].wind.speed + " MPH"
                     humidity6.textContent = "Humidity: " + data.list[36].main.humidity + "%"
-
-
-                    // icon2.innerHTML = `<img src="http://openweathermap.org/img/wn/${data.list[0].weather[0].icon}@2x.png" alt="Sky"></img>`
-
-                    // var fiveArrayDay1 = [
-                    //     data.list[0].main.temp_max,
-                    //     data.list[2].main.temp_max,
-                    //     data.list[3].main.temp_max,
-                    //     data.list[4].main.temp_max,
-                    //     data.list[5].main.temp_max,
-                    //     data.list[6].main.temp_max,
-                    //     data.list[7].main.temp_max
-                    // ]
-                    // for (let index = 0; index < fiveArrayDay1.length; index++) {
-
-
-
-                    // }
-
+                    icon6.innerHTML = `<img src="http://openweathermap.org/img/wn/${data.list[36].weather[0].icon}@2x.png" alt="Sky"></img>`
                 });
             }
 
         })
 
 }
-var savedCities =JSON.parse(localStorage.getItem("saved-city"))||[]
-function saveToStorage(cityName){
+var savedCities = JSON.parse(localStorage.getItem("saved-city")) || []
+function saveToStorage(cityName) {
     savedCities.push(cityName)
-   localStorage.setItem("saved-city", JSON.stringify(savedCities))
+    localStorage.setItem("saved-city", JSON.stringify(savedCities))
 }
-function createButtons(){
-    for(i=0;i<savedCities.length;i++){
+function createButtons() {
+    for (i = 0; i < savedCities.length; i++) {
         var newButton = document.createElement("button")
-    newButton.textContent = savedCities[i]
-    pastSearchEl.append(newButton)
+        newButton.textContent = savedCities[i]
+        newButton.addEventListener("click", function () {
+            console.log(this.textContent)
+            getWeather(this.textContent)
+            var fc = document.querySelector("#fc")
+            fc.classList.remove("hide")
+        })
+        pastSearchEl.append(newButton)
     }
-    
+
 }
 
 createButtons();
 
-
-
-// showHistory(){
-//     localStorage.get item
-//     for (let index = 0; index < city.length; index++) {
-//         const element = array[index];
-//         append button
-        
-//     }
-// }
