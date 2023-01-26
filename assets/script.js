@@ -6,6 +6,7 @@ var windEl = document.querySelector("#wind")
 var humidityEl = document.querySelector("#humidity")
 var todaysDate = document.querySelector("#today")
 var currentIcon = document.querySelector("#current-icon")
+var pastSearchEl = document.querySelector("#past-searched-cities")
 
 //5 Day Forecast
 var temp2 = document.querySelector("#temp2")
@@ -141,6 +142,28 @@ function forecastFiveDay(lat, lon) {
 
         })
 
+}
+
+function saveHistory(city){
+    const history = localStorage.getItem("history")|| [];
+    if(history.length>0){
+        history = JSON.parse(history)
+    }
+    history.push(city);
+    localStorage.setItem("history", JSON.stringify(history));
+    loadHistory()
+}
+function loadHistory(){
+    const history = localStorage.getItem("history")|| [];
+    if(history.length>0){
+        history = JSON.parse(history);
+
+        history.forEach(function(city){
+            var cityBtn = document.createElement('button');
+            cityBtn.innerHTML(city)
+            pastSearchEl.append(searchBtn)
+        })
+    }
 }
 
 // showHistory(){
