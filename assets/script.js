@@ -54,6 +54,7 @@ searchBtn.addEventListener("click", function () {
     getWeather(city.value)
     var fc = document.querySelector("#fc")
     fc.classList.remove("hide")
+    saveToStorage(city.value)
 })
 
 var getWeather = function (city) {
@@ -143,28 +144,23 @@ function forecastFiveDay(lat, lon) {
         })
 
 }
-
-function saveHistory(city){
-    const history = localStorage.getItem("history")|| [];
-    if(history.length>0){
-        history = JSON.parse(history)
-    }
-    history.push(city);
-    localStorage.setItem("history", JSON.stringify(history));
-    loadHistory()
+var savedCities =JSON.parse(localStorage.getItem("saved-city"))||[]
+function saveToStorage(cityName){
+    savedCities.push(cityName)
+   localStorage.setItem("saved-city", JSON.stringify(savedCities))
 }
-function loadHistory(){
-    const history = localStorage.getItem("history")|| [];
-    if(history.length>0){
-        history = JSON.parse(history);
-
-        history.forEach(function(city){
-            var cityBtn = document.createElement('button');
-            cityBtn.innerHTML(city)
-            pastSearchEl.append(searchBtn)
-        })
+function createButtons(){
+    for(i=0;i<savedCities.length;i++){
+        var newButton = document.createElement("button")
+    newButton.textContent = savedCities[i]
+    pastSearchEl.append(newButton)
     }
+    
 }
+
+createButtons();
+
+
 
 // showHistory(){
 //     localStorage.get item
